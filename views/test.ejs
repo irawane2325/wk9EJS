@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EJS CHALLENGE TEST</title>
+</head>
+<h3>This is a challenge test for EJS template</h3>
+<body>
+    <h4>User form filling template  </h4>
+
+
+    <div class="users">
+        <% data.forEach((data)=> { %>
+            <% if(data.name == undefined){ %>
+                <ul id='bad'>Bad Data
+                <h5>Name: <%= data.name%> </h5>
+                <li>Age: <%= data.age%> </li><br>
+            </ul>
+           <% } else if(data.age == undefined) {%>
+            <ul class='missing'>
+             <h5>Name: <%= data.name%> </h5>
+             <li>Hobbies: <%= data.hobbies%> </li><br>
+                <li id='age'>Age: Age is Missing</li>
+            </ul>
+          <%  } else if(data.hobbies == undefined) {%>
+            <ul class="missing">
+                <h5>Name: <%= data.name%> </h5>
+                <li>Age: <%= data.age%> </li><br>
+                <li id='hobby'>Hobbies: Hobbies is Missing</li>
+          </ul>
+          <%  } else if (data.name != undefined && data.age != undefined && data.hobbies != undefined) {%>
+          <ul class="complete">
+            <h5>Name: <%= data.name%> </h5>
+            <li>Age: <%= data.age%> </li><br>
+            <li>Hobbies: <%= data.hobbies%> </li><br>
+          </ul>
+       <% }%>
+       <% }) %>
+
+               
+   
+    </div>
+  
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+    #h5{
+        font-family:'Oswald';
+    }
+
+    .missing , .complete {
+        width:35%;
+        padding:5%;
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.44);
+    }
+
+    #age, #hobby {
+        color:red;
+    }
+
+    #bad {
+        font-style: italic;
+    }
+
+</style>
+
+<script>
+   let bad_data= document.getElementById('bad');
+   bad_data.style.boxShadow = '2px 2px 2px 2px rgba(0, 0, 0, 0.44) ';
+   bad_data.style.backgroundColor='red';
+   bad_data.style.width='40%';
+</script>
+
+
+
+</body>
+</html>
